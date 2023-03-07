@@ -8,24 +8,29 @@ const App = () => {
   const [turn, setTurn] = useState(0)
   
   const checkTurn = (index) => {
+    //conditional statement to check if a player one
     if(calculateWinner(squares) !== null){
-      console.log(calculateWinner(squares))
-     const winner = calculateWinner(squares) === "X" ? "Player One won(O)" : "Player Two won(X)"
-       alert(winner)
-
+      //conditional state to display the right player that one 
+     const winner = calculateWinner(squares) === "X" ? "Player One(X) won" : "Player Two(O) won"
+      alert(winner)
+    }else if(calculateWinner(squares) ===null &&  turn > 8){
+      alert("Tie Game!")
     }else if (squares[index] === null) {
-      // Draws X if it's player 1's turn else draws O
-      const current = turn === 0 ? "X" : "O"
+      console.log(calculateWinner(squares))
+      // places an X if its player one and an O if its player 2
+      const current = turn  % 2 === 0 ? "X" : "O"
       // Updating the data state
       squares[index] = current;
-      //Drawing on the board
+      //setting the current square that was clicked on to either an X or an O
       setSquares[index] = current
       // Switching the turn
-      setTurn(turn === 0 ? 1 : 0)
-      console.log(turn)
+     // setTurn(turn === 0 ? 1 : 0)
+     setTurn(turn +1)
+     console.log(turn)
   }
 }
 
+//the function that was given to check whether one player got 3 squares in a row 
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -57,8 +62,6 @@ function calculateWinner(squares) {
           value={value}
           index={index}
           checkTurn={checkTurn}
-          calculateWinner={calculateWinner}
-
            />
         )
       })}
