@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Square = ({value, index, checkTurn}) => {
+const Square = ({value, index, checkTurn, calculateWinner}) => {
 
   const handleTurn = () =>{
     checkTurn(index)
+    calculateWinner(index)
+    
   }
 
   return (
