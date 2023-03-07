@@ -1,5 +1,16 @@
+h1{
+  text-align: center;
+}
+
 .square {
   border: 2px solid black;
   height: 100px;
   width: 100px;
+}
+
+.TicTacBoard {
+  display: flex;
+  flex-wrap: wrap;
+  width: 320px;
+  margin: 0 auto;
 }
