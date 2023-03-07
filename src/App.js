@@ -13,7 +13,7 @@ const App = () => {
       //conditional state to display the right player that one 
      const winner = calculateWinner(squares) === "X" ? "Player One(X) won" : "Player Two(O) won"
       alert(winner)
-    }else if(calculateWinner(squares) ===null &&  turn > 8){
+    }else if(calculateWinner(squares) === null &&  turn > 8){
       alert("Tie Game!")
     }else if (squares[index] === null) {
       console.log(calculateWinner(squares))
@@ -25,7 +25,7 @@ const App = () => {
       setSquares[index] = current
       // Switching the turn
      // setTurn(turn === 0 ? 1 : 0)
-     setTurn(turn +1)
+     setTurn(turn +1 )
      console.log(turn)
   }
 }
