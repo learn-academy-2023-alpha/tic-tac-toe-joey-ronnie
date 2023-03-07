@@ -16,20 +16,16 @@ const App = () => {
     }else if(calculateWinner(squares) === null &&  turn > 8){
       alert("Tie Game!")
     }else if (squares[index] === null) {
-      console.log(calculateWinner(squares))
       // places an X if its player one and an O if its player 2
       const current = turn  % 2 === 0 ? "X" : "O"
       // Updating the data state
       squares[index] = current;
       //setting the current square that was clicked on to either an X or an O
       setSquares[index] = current
-      // Switching the turn
-     // setTurn(turn === 0 ? 1 : 0)
-     setTurn(turn +1 )
-     console.log(turn)
+      // Adding 1 to count to switch turns 
+      setTurn(turn+1)
   }
 }
-
 //the function that was given to check whether one player got 3 squares in a row 
 function calculateWinner(squares) {
   const lines = [
@@ -50,7 +46,11 @@ function calculateWinner(squares) {
   }
   return null;
 }
-  
+//funtion to reset game board
+const resetGame = () => {
+  setSquares(Array(9).fill(null))
+  setTurn(0)
+}
   return (
     <>
       <h1>Tic Tac Toe</h1>
@@ -65,7 +65,9 @@ function calculateWinner(squares) {
            />
         )
       })}
+       <button onClick={resetGame}>Reset Game</button>
      </div>
+    
     </>
   )
 }
