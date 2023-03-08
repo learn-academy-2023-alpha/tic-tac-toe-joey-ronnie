@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import Square from './components/Square'
 import './App.css'
-
+import PlayersTurn from './components/PlayersTurn'
 
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null))
@@ -13,7 +13,7 @@ const App = () => {
       //conditional state to display the right player that one 
      const winner = calculateWinner(squares) === "X" ? "Player One(X) won" : "Player Two(O) won"
       alert(winner)
-    }else if(calculateWinner(squares) === null &&  turn > 8){
+    }else if(calculateWinner(squares) === null &&  turn >8){
       alert("Tie Game!")
     }else if (squares[index] === null) {
       // places an X if its player one and an O if its player 2
@@ -24,7 +24,24 @@ const App = () => {
       setSquares[index] = current
       // Adding 1 to count to switch turns 
       setTurn(turn+1)
+    
   }
+}
+useEffect(()=>{
+checkTurn()
+
+},[squares, turn])
+
+const playersTurn = (turn) => {
+  if(turn%2 ===0){
+    console.log(turn)
+    return "Turn: Player 1"
+  }else if(turn%2 !==0)
+  return "Turn: Player 2"
+  else{
+    return "Only two players allowed"
+  }
+
 }
 //the function that was given to check whether one player got 3 squares in a row 
 function calculateWinner(squares) {
@@ -53,6 +70,7 @@ const resetGame = () => {
 }
   return (
     <>
+    <body>
       <h1>Tic Tac Toe</h1>
       <div className="TicTacBoard">
       {squares.map((value,index)=>{
@@ -65,9 +83,14 @@ const resetGame = () => {
            />
         )
       })}
-       <button onClick={resetGame}>Reset Game</button>
+       <button className="myButton" onClick={resetGame}>Reset Game</button>
      </div>
-    
+     <PlayersTurn 
+      playersTurn={playersTurn(turn)}
+      turn={turn}
+      />
+     </body>
+     
     </>
   )
 }

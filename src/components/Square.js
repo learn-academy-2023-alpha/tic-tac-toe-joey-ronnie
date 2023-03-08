@@ -6,6 +6,7 @@ const Square = ({value, index, checkTurn}) => {
     checkTurn(index)
   }
   return (
+    
     <div className="square" onClick={handleTurn}>{value}</div>
   )
 }
