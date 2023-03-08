@@ -34,8 +34,8 @@ x - As a user, I can click on a restart button that will clear the game board.
 
 ### 🏔 Stretch Goals
 
-- As a user, I can see a pleasant stylings on the application.
-- As a user, I can see a notification that informs me whether it is currently my partner or my turn.
+X- As a user, I can see a pleasant stylings on the application.
+X- As a user, I can see a notification that informs me whether it is currently my partner or my turn.
 - As a user, I can choose my marker from a predetermined list (X, O, a color, an emoji, etc...).
 
 ### 👩‍💻 Developer Stretch Goals
